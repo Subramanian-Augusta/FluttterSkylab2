@@ -229,12 +229,12 @@ class shadowContainer extends StatelessWidget {
               SizedBox(
                 height: 3,
               ),
-              // Text(streak!,
-              //     style: TextStyle(
-              //       fontSize: 12,
-              //       fontWeight: FontWeight.bold,
-              //       color: Colors.grey,
-              //     ))
+              Text(streak!,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ))
             ],
           ),
         ),

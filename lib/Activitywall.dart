@@ -82,6 +82,9 @@ class ActivityWallpage extends StatelessWidget {
               ),
             ),
           ),
+          SizedBox(
+            height: 10,
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Row(
@@ -90,32 +93,134 @@ class ActivityWallpage extends StatelessWidget {
                   Text(
                     "Recognition",
                     style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
                         color: Colors.black),
                   ),
-                  SizedBox(width: 180),
-                  Text("See All")
+                  Spacer()
                 ]),
           ),
           Container(
-              height: 160,
+              height: 165,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: InkWell(
-                      child: Container(
-                        width: 160,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.grey),
-                      ),
-                    ),
-                  )
+                  Recognitioncontainer(
+                      Title1: "SPOTLIGHT",
+                      Title2: "Subramanian",
+                      Color1: Colors.black,
+                      Color2: Colors.purple),
+                  Recognitioncontainer(
+                      Title1: "LEADERBOARD",
+                      Title2: "Overall Points",
+                      Color1: Colors.black,
+                      Color2: Colors.green),
+                  Recognitioncontainer(
+                      Title1: "lEADERBOARD",
+                      Title2: "Overall Points",
+                      Color1: Colors.black,
+                      Color2: Colors.blue),
+                  Recognitioncontainer(
+                      Title1: "lEADERBOARD",
+                      Title2: "Most Likes",
+                      Color1: Colors.black,
+                      Color2: Colors.yellow),
                 ],
               ))
         ]));
+  }
+}
+
+class Recognitioncontainer extends StatelessWidget {
+  final String? Title1;
+  final String? Title2;
+  final Color? Color1;
+  final Color? Color2;
+  const Recognitioncontainer(
+      {super.key,
+      required this.Title1,
+      required this.Title2,
+      required this.Color1,
+      required this.Color2});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: InkWell(
+        child: Container(
+            width: 165,
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                  colors: [
+                    Color1!,
+                    Color2!,
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.grey),
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      Title1!,
+                      style: TextStyle(color: Colors.white, fontSize: 12),
+                    ),
+                    Spacer(),
+                    if (Title2 != "Subramanian") ...[
+                      Stack(
+                        alignment: Alignment.center,
+                        children: <Widget>[
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                ClipOval(
+                                    child: Image.asset(
+                                  'assets/images/profileimage1.jpeg',
+                                  width: 40,
+                                  height: 40,
+                                )),
+                                SizedBox(
+                                  width: 40,
+                                ),
+                                ClipOval(
+                                    child: Image.asset(
+                                  'assets/images/profileimage1.jpeg',
+                                  width: 40,
+                                  height: 40,
+                                )),
+                              ]),
+                          ClipOval(
+                              child: Image.asset(
+                            'assets/images/profileimage1.jpeg',
+                            width: 60,
+                            height: 60,
+                          )),
+                        ],
+                      ),
+                    ] else ...[
+                      ClipOval(
+                          child: Image.asset(
+                        'assets/images/profileimage1.jpeg',
+                        width: 60,
+                        height: 60,
+                      )),
+                    ],
+                    Spacer(),
+                    Text(
+                      Title2!,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ]),
+            )),
+      ),
+    );
   }
 }
