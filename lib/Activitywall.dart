@@ -171,13 +171,13 @@ class ActivityWallpage extends StatelessWidget {
                         child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
-                              StoriesContainer(UserName: "Mani"),
-                              StoriesContainer(UserName: "Saravanan"),
-                              StoriesContainer(UserName: "Nandha"),
-                              StoriesContainer(UserName: "Praman"),
-                              StoriesContainer(UserName: "Praman"),
-                              StoriesContainer(UserName: "Praman"),
-                              StoriesContainer(UserName: "Praman"),
+                              StoriesContainer(UserName: "Mani",isLive: true),
+                              StoriesContainer(UserName: "Saravanan",isLive: false,),
+                              StoriesContainer(UserName: "Nandha",isLive: false,),
+                              StoriesContainer(UserName: "Praman",isLive: false,),
+                              StoriesContainer(UserName: "Praman",isLive: false,),
+                              StoriesContainer(UserName: "Praman",isLive: false,),
+                              StoriesContainer(UserName: "Praman",isLive: false,),
                             ]),
                       )
                     ]),
@@ -315,8 +315,9 @@ class Recognitioncontainer extends StatelessWidget {
 
 class StoriesContainer extends StatelessWidget {
   final String? UserName;
+  final bool? isLive;
 
-  const StoriesContainer({super.key, required this.UserName});
+  const StoriesContainer({super.key, required this.UserName,required this.isLive});
 
   @override
   Widget build(BuildContext context) {
@@ -326,17 +327,55 @@ class StoriesContainer extends StatelessWidget {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+
+              
               CircleAvatar(
                 radius: 30,
-                backgroundColor: Colors.grey,
+                backgroundColor:(isLive == true) ?Colors.red :Colors.grey,
                 child: Padding(
                   padding: const EdgeInsets.all(3),
-                  child: ClipOval(
-                      child: Image.asset(
-                    'assets/images/profileimage1.jpeg',
-                    width: 55,
-                    height: 55,
-                  )),
+                  child: Stack
+                  (
+                    children:<Widget>[ ClipOval(
+                        child: Image.asset(
+                      'assets/images/profileimage1.jpeg',
+                      width: 55,
+                      height: 55,
+                    )),
+
+                    if (isLive == true ) ...[
+                    Padding(
+                      padding: const EdgeInsets.only(left:14.0,bottom: 0),
+                      
+                       
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                        //  crossAxisAlignment: CrossAxisAlignment.center,
+                          children:<Widget>[Container(
+                            height:10 ,
+                        width: 28,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          color: Colors.red
+                        ),
+
+                            child: Text(
+                              "LIVE",
+                              style: TextStyle(
+                                color: Colors.black,
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.bold,
+                                            
+                              ),
+                            ),
+                          )]
+                        ),
+                      
+                    )
+                    ]
+                    
+                    ]
+                  ),
                 ),
               ),
               SizedBox(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'login.dart';
+
 class Profilepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,69 @@ class Profilepage extends StatelessWidget {
           Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+showModalBottomSheet(context: context,useRootNavigator: true,backgroundColor: Colors.white, builder: (context){
+  return Wrap(
+                        children: [
+                          ListTile(
+                            leading: Icon(Icons.share),
+                            title: Text('Share'),
+                          ),
+                          Divider(),
+                          ListTile(
+                            leading: Icon(Icons.manage_accounts_rounded),
+                            title: Text('Profile Settings'),
+                          ),
+                           Divider(),
+                          ListTile(
+                            leading: Icon(Icons.lock_open),
+                            title: Text('Account Settings'),
+                          ),
+                           Divider(),
+                          ListTile(
+                            leading: Icon(Icons.star),
+                            title: Text('Ads'),
+                          ),
+                           Divider(),
+                          ListTile(
+                            leading: Icon(Icons.help),
+                            title: Text('Help'),
+                          ),
+                           Divider(),
+                          ListTile(
+                            leading: Icon(Icons.cancel_outlined),
+                            title: Text('Logout',
+                            style: TextStyle(color: Colors.red),),
+
+                            onTap: () {
+    //                           AlertDialog(title: Text("Sample Alert Dialog"), 
+    //                           content: Text("It is the body of the alert Dialog"), 
+    //                          actions: <Widget>[  
+    // OutlinedButton(child: Text("Yes"),onPressed:(){
+       Navigator.push(
+                          context, MaterialPageRoute(builder: (_) => LoginDemo()));
+      
+
+  //  }),  
+   //OutlinedButton(child: Text("No"),)  
+//],);  
+//content: Text("It is the body of the alert Dialog")
+
+                            },
+                          ),
+                          ListTile(
+                            // leading: Icon(Icons.cancel_outlined),
+                            // title: Text('Logout',
+                            // style: TextStyle(color: Colors.red),),
+                          ),
+                         // SizedBox(height: 20,)
+                        ],
+  );
+  
+}
+);
+
+                },
                 child: Icon(
                   Icons.more_vert,
                   color: Colors.black,
@@ -189,6 +253,10 @@ class Profilepage extends StatelessWidget {
                 Text("Jan ,23")
               ],
             ),
+          ),
+
+          Divider(
+            color: Colors.grey,
           )
         ],
       )),

@@ -10,13 +10,22 @@ class LoginDemo extends StatefulWidget {
 class _LoginDemoState extends State<LoginDemo> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(
+    return Container(
+
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+          
+          colors:[Colors.white,Colors.blueGrey] )
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        
+        body: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 60.0),
+              padding: const EdgeInsets.only(top: 120.0),
               child: Center(
                 child: Container(
                     width: 200,
@@ -24,7 +33,7 @@ class _LoginDemoState extends State<LoginDemo> {
                     /*decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50.0)),*/
-
+        
                     child: const Image(
                       image: AssetImage(
                         "assets/images/skylab_logo.png",
@@ -37,7 +46,12 @@ class _LoginDemoState extends State<LoginDemo> {
               padding: EdgeInsets.symmetric(horizontal: 25),
               child: TextField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                  // fillColor: Colors.black,
+                    border: OutlineInputBorder(
+                      borderSide:BorderSide(
+                        width: 3,color: Colors.red
+                      )
+                    ),
                     labelText: 'Email',
                     hintText: 'Enter valid email id as abc@gmail.com'),
               ),
@@ -55,20 +69,26 @@ class _LoginDemoState extends State<LoginDemo> {
                     hintText: 'Enter secure password'),
               ),
             ),
-            TextButton(
-              onPressed: () {
-                //TODO FORGOT PASSWORD SCREEN GOES HERE
-              },
-              child: const Text(
-                'Forgot Password?',
-                style: TextStyle(color: Colors.black, fontSize: 15),
+            Padding(
+              padding: const EdgeInsets.only(left: 200),
+              child: TextButton(
+                onPressed: () {
+                  //TODO FORGOT PASSWORD SCREEN GOES HERE
+                },
+                child: const Text(
+                  'Forgot Password?',
+                  style: TextStyle(color: Colors.black, fontSize: 15),
+                ),
               ),
+            ),
+            SizedBox(
+              height: 0,
             ),
             Container(
               height: 50,
-              width: 150,
+              width: 340,
               decoration: BoxDecoration(
-                  color: Colors.black, borderRadius: BorderRadius.circular(5)),
+                  color: Colors.blue, borderRadius: BorderRadius.circular(5)),
               child: TextButton(
                 onPressed: () {
                   Navigator.push(
@@ -83,14 +103,22 @@ class _LoginDemoState extends State<LoginDemo> {
               ),
             ),
             const SizedBox(
-              height: 130,
+              height: 240,
+            ),
+            Divider(
+              color: Colors.grey,
             ),
             TextButton(
                 onPressed: () {
                   Navigator.push(
                       context, MaterialPageRoute(builder: (_) => SignUpDemo()));
                 },
-                child: const Text('New User? Create Account'))
+                child: const Text('New User? Create Account',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black
+                ),
+                ))
           ],
         ),
       ),
