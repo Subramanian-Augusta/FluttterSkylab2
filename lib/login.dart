@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/SignupPage.dart';
 import 'package:flutter_application_1/main.dart';
 
 class LoginDemo extends StatefulWidget {
@@ -84,7 +85,12 @@ class _LoginDemoState extends State<LoginDemo> {
             const SizedBox(
               height: 130,
             ),
-            const Text('New User? Create Account')
+            TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_) => SignUpDemo()));
+                },
+                child: const Text('New User? Create Account'))
           ],
         ),
       ),

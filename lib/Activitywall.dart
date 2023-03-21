@@ -28,106 +28,166 @@ class ActivityWallpage extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {},
                   child: Icon(
-                    Icons.more_vert,
+                    Icons.notifications_active_outlined,
+                    color: Colors.black,
+                  ),
+                )),
+            Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Icon(
+                    Icons.chat_bubble_outline_rounded,
                     color: Colors.black,
                   ),
                 )),
           ],
         ),
-        body: Column(children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Container(
-              width: 360,
-              height: 300,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image:
-                            AssetImage("assets/images/Activitywallsample.jpeg"),
-                        fit: BoxFit.fill),
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(8),
-                    shape: BoxShape.rectangle,
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey, blurRadius: 6, spreadRadius: 2)
-                    ]),
-                child: Padding(
-                  padding: const EdgeInsets.all(13),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Actions",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(
+                  width: 360,
+                  height: 300,
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(
+                                "assets/images/Activitywallsample.jpeg"),
+                            fit: BoxFit.fill),
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(8),
+                        shape: BoxShape.rectangle,
+                        boxShadow: [
+                          BoxShadow(
+                              color: Colors.grey,
+                              blurRadius: 6,
+                              spreadRadius: 2)
+                        ]),
+                    child: Padding(
+                      padding: const EdgeInsets.all(13),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Actions",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 140,
+                          ),
+                          Text("what are you upto?",
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.white,
+                              ))
+                        ],
                       ),
-                      SizedBox(
-                        width: 140,
-                      ),
-                      Text("what are you upto?",
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.normal,
-                            color: Colors.white,
-                          ))
-                    ],
+                    ),
                   ),
                 ),
               ),
-            ),
+              SizedBox(
+                height: 10,
+              ),
+              Divider(
+                color: Colors.grey,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Recognition",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      Spacer()
+                    ]),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Container(
+                  height: 165,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Recognitioncontainer(
+                          Title1: "SPOTLIGHT",
+                          Title2: "Subramanian",
+                          Color1: Colors.black,
+                          Color2: Colors.purple),
+                      Recognitioncontainer(
+                          Title1: "LEADERBOARD",
+                          Title2: "Overall Points",
+                          Color1: Colors.black,
+                          Color2: Colors.green),
+                      Recognitioncontainer(
+                          Title1: "lEADERBOARD",
+                          Title2: "Overall Points",
+                          Color1: Colors.black,
+                          Color2: Colors.blue),
+                      Recognitioncontainer(
+                          Title1: "lEADERBOARD",
+                          Title2: "Most Likes",
+                          Color1: Colors.black,
+                          Color2: Colors.yellow),
+                    ],
+                  )),
+              SizedBox(
+                height: 15,
+              ),
+              Divider(color: Colors.grey),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "Stories",
+                        style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Container(
+                        height: 100,
+                        child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              StoriesContainer(UserName: "Mani"),
+                              StoriesContainer(UserName: "Saravanan"),
+                              StoriesContainer(UserName: "Nandha"),
+                              StoriesContainer(UserName: "Praman"),
+                              StoriesContainer(UserName: "Praman"),
+                              StoriesContainer(UserName: "Praman"),
+                              StoriesContainer(UserName: "Praman"),
+                            ]),
+                      )
+                    ]),
+              ),
+              Divider(
+                color: Colors.grey,
+              ),
+            ],
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    "Recognition",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
-                  Spacer()
-                ]),
-          ),
-          Container(
-              height: 165,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  Recognitioncontainer(
-                      Title1: "SPOTLIGHT",
-                      Title2: "Subramanian",
-                      Color1: Colors.black,
-                      Color2: Colors.purple),
-                  Recognitioncontainer(
-                      Title1: "LEADERBOARD",
-                      Title2: "Overall Points",
-                      Color1: Colors.black,
-                      Color2: Colors.green),
-                  Recognitioncontainer(
-                      Title1: "lEADERBOARD",
-                      Title2: "Overall Points",
-                      Color1: Colors.black,
-                      Color2: Colors.blue),
-                  Recognitioncontainer(
-                      Title1: "lEADERBOARD",
-                      Title2: "Most Likes",
-                      Color1: Colors.black,
-                      Color2: Colors.yellow),
-                ],
-              ))
-        ]));
+        ));
   }
 }
 
@@ -178,37 +238,65 @@ class Recognitioncontainer extends StatelessWidget {
                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                ClipOval(
-                                    child: Image.asset(
-                                  'assets/images/profileimage1.jpeg',
-                                  width: 40,
-                                  height: 40,
-                                )),
+                                CircleAvatar(
+                                  radius: 20,
+                                  backgroundColor: Colors.grey,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2),
+                                    child: ClipOval(
+                                        child: Image.asset(
+                                      'assets/images/profileimage1.jpeg',
+                                      width: 40,
+                                      height: 40,
+                                    )),
+                                  ),
+                                ),
                                 SizedBox(
                                   width: 40,
                                 ),
-                                ClipOval(
-                                    child: Image.asset(
-                                  'assets/images/profileimage1.jpeg',
-                                  width: 40,
-                                  height: 40,
-                                )),
+                                CircleAvatar(
+                                  radius: 20,
+                                  backgroundColor: Colors.grey,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2),
+                                    child: ClipOval(
+                                        child: Image.asset(
+                                      'assets/images/profileimage1.jpeg',
+                                      width: 40,
+                                      height: 40,
+                                    )),
+                                  ),
+                                )
                               ]),
-                          ClipOval(
+                          CircleAvatar(
+                            radius: 30,
+                            backgroundColor: Colors.grey,
+                            child: Padding(
+                              padding: const EdgeInsets.all(2),
+                              child: ClipOval(
+                                  child: Image.asset(
+                                'assets/images/profileimage1.jpeg',
+                                width: 60,
+                                height: 60,
+                              )),
+                            ),
+                          )
+                        ],
+                      ),
+                    ] else ...[
+                      CircleAvatar(
+                        radius: 30,
+                        backgroundColor: Colors.grey,
+                        child: Padding(
+                          padding: const EdgeInsets.all(2),
+                          child: ClipOval(
                               child: Image.asset(
                             'assets/images/profileimage1.jpeg',
                             width: 60,
                             height: 60,
                           )),
-                        ],
-                      ),
-                    ] else ...[
-                      ClipOval(
-                          child: Image.asset(
-                        'assets/images/profileimage1.jpeg',
-                        width: 60,
-                        height: 60,
-                      )),
+                        ),
+                      )
                     ],
                     Spacer(),
                     Text(
@@ -220,6 +308,49 @@ class Recognitioncontainer extends StatelessWidget {
                     ),
                   ]),
             )),
+      ),
+    );
+  }
+}
+
+class StoriesContainer extends StatelessWidget {
+  final String? UserName;
+
+  const StoriesContainer({super.key, required this.UserName});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(5.0),
+      child: Container(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              CircleAvatar(
+                radius: 30,
+                backgroundColor: Colors.grey,
+                child: Padding(
+                  padding: const EdgeInsets.all(3),
+                  child: ClipOval(
+                      child: Image.asset(
+                    'assets/images/profileimage1.jpeg',
+                    width: 55,
+                    height: 55,
+                  )),
+                ),
+              ),
+              SizedBox(
+                height: 2,
+              ),
+              Text(
+                UserName!,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                ),
+              )
+            ]),
       ),
     );
   }
