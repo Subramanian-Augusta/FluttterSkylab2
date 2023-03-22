@@ -42,67 +42,96 @@ class Profilepage extends StatelessWidget {
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {
-showModalBottomSheet(context: context,useRootNavigator: true,backgroundColor: Colors.white, builder: (context){
-  return Wrap(
-                        children: [
-                          ListTile(
-                            leading: Icon(Icons.share),
-                            title: Text('Share'),
-                          ),
-                          Divider(),
-                          ListTile(
-                            leading: Icon(Icons.manage_accounts_rounded),
-                            title: Text('Profile Settings'),
-                          ),
-                           Divider(),
-                          ListTile(
-                            leading: Icon(Icons.lock_open),
-                            title: Text('Account Settings'),
-                          ),
-                           Divider(),
-                          ListTile(
-                            leading: Icon(Icons.star),
-                            title: Text('Ads'),
-                          ),
-                           Divider(),
-                          ListTile(
-                            leading: Icon(Icons.help),
-                            title: Text('Help'),
-                          ),
-                           Divider(),
-                          ListTile(
-                            leading: Icon(Icons.cancel_outlined),
-                            title: Text('Logout',
-                            style: TextStyle(color: Colors.red),),
-
-                            onTap: () {
-    //                           AlertDialog(title: Text("Sample Alert Dialog"), 
-    //                           content: Text("It is the body of the alert Dialog"), 
-    //                          actions: <Widget>[  
-    // OutlinedButton(child: Text("Yes"),onPressed:(){
-       Navigator.push(
-                          context, MaterialPageRoute(builder: (_) => LoginDemo()));
-      
-
-  //  }),  
-   //OutlinedButton(child: Text("No"),)  
-//],);  
-//content: Text("It is the body of the alert Dialog")
-
-                            },
-                          ),
-                          ListTile(
-                            // leading: Icon(Icons.cancel_outlined),
-                            // title: Text('Logout',
-                            // style: TextStyle(color: Colors.red),),
-                          ),
-                         // SizedBox(height: 20,)
-                        ],
-  );
-  
-}
-);
-
+                  showModalBottomSheet(
+                      context: context,
+                      useRootNavigator: true,
+                      backgroundColor: Colors.white,
+                      builder: (context) {
+                        return Wrap(
+                          children: [
+                            ListTile(
+                              leading: Icon(Icons.share),
+                              title: Text('Share'),
+                            ),
+                            Divider(),
+                            ListTile(
+                              leading: Icon(Icons.manage_accounts_rounded),
+                              title: Text('Profile Settings'),
+                            ),
+                            Divider(),
+                            ListTile(
+                              leading: Icon(Icons.lock_open),
+                              title: Text('Account Settings'),
+                            ),
+                            Divider(),
+                            ListTile(
+                              leading: Icon(Icons.star),
+                              title: Text('Ads'),
+                            ),
+                            Divider(),
+                            ListTile(
+                              leading: Icon(Icons.help),
+                              title: Text('Help'),
+                            ),
+                            Divider(),
+                            ListTile(
+                              leading: Icon(Icons.cancel_outlined),
+                              title: Text(
+                                'Logout',
+                                style: TextStyle(color: Colors.red),
+                              ),
+                              onTap: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text(
+                                          "Logout?",
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        content: Text(
+                                            "Are you sure want to logout your account?"),
+                                        actions: <Widget>[
+                                          OutlinedButton(
+                                              child: Text(
+                                                "Yes",
+                                                style: TextStyle(
+                                                    color: Colors.red),
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (_) =>
+                                                            LoginDemo()));
+                                              }),
+                                          OutlinedButton(
+                                            child: Text(
+                                              "No",
+                                            ),
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                          )
+                                        ],
+                                      );
+                                    });
+                                // content:
+                                // const Text(
+                                //     "It is the body of the alert Dialog");
+                              },
+                            ),
+                            ListTile(
+                                // leading: Icon(Icons.cancel_outlined),
+                                // title: Text('Logout',
+                                // style: TextStyle(color: Colors.red),),
+                                ),
+                            // SizedBox(height: 20,)
+                          ],
+                        );
+                      });
                 },
                 child: Icon(
                   Icons.more_vert,
@@ -254,8 +283,7 @@ showModalBottomSheet(context: context,useRootNavigator: true,backgroundColor: Co
               ],
             ),
           ),
-
-          Divider(
+          const Divider(
             color: Colors.grey,
           )
         ],
