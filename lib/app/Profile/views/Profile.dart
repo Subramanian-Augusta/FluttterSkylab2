@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/app/Profile/controllers/profile_controller.dart';
+import 'package:get/get.dart';
 
-import 'login.dart';
 
-class Profilepage extends StatelessWidget {
+import '../../login/views/login.dart';
+
+
+class ProfileView extends GetView<ProfileController> {
+  final profileController = Get.put<ProfileController>(ProfileController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return GetBuilder<ProfileController>(
+        builder: ((profileController) => Scaffold(
       appBar: AppBar(
         toolbarHeight: 75,
         automaticallyImplyLeading: false,
@@ -105,7 +111,7 @@ class Profilepage extends StatelessWidget {
                                                     context,
                                                     MaterialPageRoute(
                                                         builder: (_) =>
-                                                            LoginDemo()));
+                                                            LoginView()));
                                               }),
                                           OutlinedButton(
                                             child: Text(
@@ -288,7 +294,9 @@ class Profilepage extends StatelessWidget {
           )
         ],
       )),
-    );
+    )
+        )
+     );
   }
 }
 

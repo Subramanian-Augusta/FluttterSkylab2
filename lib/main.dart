@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Activitywall.dart';
-import 'package:flutter_application_1/Profile.dart';
-import 'package:flutter_application_1/login.dart';
+import 'package:flutter_application_1/app/ActivityWall/view/Activitywall.dart';
+import 'package:flutter_application_1/app/Profile/views/Profile.dart';
+import 'package:flutter_application_1/app/login/views/login.dart';
+import 'package:get/get.dart';
+
+import 'app/Routes/app_pages.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,12 +16,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
+       initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
+      
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: LoginDemo(),
+      home: LoginView(),
     );
   }
 }
@@ -43,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   final List<Widget> pages = [
-    ActivityWallpage(),
+    ActivityWall(),
     Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     ),
-    Profilepage(),
+    ProfileView(),
   ];
 
   @override

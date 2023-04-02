@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/login.dart';
+import 'package:flutter_application_1/app/login/views/login.dart';
+import 'package:flutter_application_1/app/signup/controller/signup_controller.dart';
 import 'package:flutter_application_1/main.dart';
+import 'package:get/get.dart';
 
-class SignUpDemo extends StatefulWidget {
-  // const SignUpDemo({super.key, required this.title});
-
-  // final String title;
-
-  @override
-  SignUpDemoState createState() => SignUpDemoState();
-}
-
-class SignUpDemoState extends State<SignUpDemo> {
+class SignupView extends GetView<SignupController> {
+  final signupController = Get.put<SignupController>(SignupController());
   @override
   Widget build(BuildContext context) {
-    return Container(
+
+
+
+        return GetBuilder<SignupController>(
+        builder: ((signupController) => Container(
+    
+    
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
           
-          colors:[Colors.white,Colors.blueGrey] )
+          colors:[Colors.white,Colors.purple.shade300] )
       ),
 
 
@@ -140,7 +140,7 @@ class SignUpDemoState extends State<SignUpDemo> {
                 TextButton(
                     onPressed: () {
                       Navigator.push(
-                          context, MaterialPageRoute(builder: (_) => LoginDemo()));
+                          context, MaterialPageRoute(builder: (_) => LoginView()));
                     },
                     child: const Text('Already have an account?',
                     style: TextStyle(
@@ -154,6 +154,8 @@ class SignUpDemoState extends State<SignUpDemo> {
           ),
         ),
       ),
-    );
+    )
+        )
+        );
   }
 }

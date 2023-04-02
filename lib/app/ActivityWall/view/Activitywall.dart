@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ActivityWallpage extends StatelessWidget {
+import '../controllers/Activitywall_controller.dart';
+class ActivityWall extends GetView<ActivityWallController> {
+  final activitywallController = Get.put<ActivityWallController>(ActivityWallController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return GetBuilder<ActivityWallController>( 
+      builder: ((loginControactivitywallControllerller) =>  Scaffold(
         appBar: AppBar(
           toolbarHeight: 55,
           automaticallyImplyLeading: false,
@@ -187,7 +191,10 @@ class ActivityWallpage extends StatelessWidget {
               ),
             ],
           ),
-        ));
+        ))
+      )
+     );
+     
   }
 }
 

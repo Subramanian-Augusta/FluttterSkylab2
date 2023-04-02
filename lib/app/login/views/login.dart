@@ -1,32 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/SignupPage.dart';
+import 'package:flutter_application_1/app/signup/views/SignupPage.dart';
 import 'package:flutter_application_1/main.dart';
+import 'package:get/get.dart';
 //import 'package:flutter_application_1/Extensions.dart';
-import 'apiService.dart';
+import '../../Apicall/apiService.dart';
+import '../controllers/login_controller.dart';
 // ignore: depend_on_referenced_packages
 
-class LoginDemo extends StatefulWidget {
-  @override
-  _LoginDemoState createState() => _LoginDemoState();
-}
 
-class _LoginDemoState extends State<LoginDemo> {
+
+class LoginView extends GetView<LoginController> {
+  final loginController = Get.put<LoginController>(LoginController());
   // var EmailValue;
   // var PasswordValue;
   bool _isAgeValidated = true;
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  // var emailController = TextEditingController();
+  // var passwordController = TextEditingController();
   //var email = emailController.text;
 
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return GetBuilder<LoginController>(
+        builder: ((loginController) => Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.bottomLeft,
               end: Alignment.topRight,
-              colors: [Colors.white, Colors.black])),
+              colors: [Colors.white, Colors.purple.shade200])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Form(
@@ -56,7 +57,7 @@ class _LoginDemoState extends State<LoginDemo> {
                 child: Form(
                   autovalidateMode: AutovalidateMode.always,
                   child: TextFormField(
-                    controller: emailController,
+                    controller: loginController.emailController,
                     validator: (value) {
                       if (value == null ||
                           value.isEmpty ||
@@ -83,7 +84,7 @@ class _LoginDemoState extends State<LoginDemo> {
                 //  EdgeInsets.only(left: 15.0, right: 15.0, top: 15, bottom: 0),
                 padding: EdgeInsets.symmetric(horizontal: 25),
                 child: TextFormField(
-                  controller: passwordController,
+                  controller: loginController. passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                       border: OutlineInputBorder(),
@@ -116,7 +117,7 @@ class _LoginDemoState extends State<LoginDemo> {
                 child: TextButton(
                   onPressed: () {
                     LoginAuthentication(
-                        emailController.text, passwordController.text);
+                        loginController. emailController.text, loginController.passwordController.text);
 
                     Navigator.push(
                         context,
@@ -138,7 +139,7 @@ class _LoginDemoState extends State<LoginDemo> {
               TextButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => SignUpDemo()));
+                        MaterialPageRoute(builder: (_) => SignupView()));
                   },
                   child: const Text(
                     'New User? Create Account',
@@ -149,6 +150,9 @@ class _LoginDemoState extends State<LoginDemo> {
           ),
         ),
       ),
+    )
+        )
     );
+    
   }
 }
