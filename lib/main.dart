@@ -1,4 +1,6 @@
+//import 'dart:js';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_application_1/app/ActivityWall/view/Activitywall.dart';
 import 'package:flutter_application_1/app/Profile/views/Profile.dart';
 import 'package:flutter_application_1/app/login/views/login.dart';
@@ -18,9 +20,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-       initialRoute: AppPages.INITIAL,
+      initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
-      
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
